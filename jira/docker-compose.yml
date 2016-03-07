@@ -1,0 +1,22 @@
+jira:
+  build: .
+  links:
+    - mysql
+  ports:
+    - "12223:8080"
+  volumes_from:
+    - data
+mysql:
+  image: tutum/mysql
+  environment:
+    MYSQL_PASS: "pass098"
+    ON_CREATE_DB: "jira"    
+  ports:
+    - "127.0.0.1:3333:3306"
+  volumes_from:
+    - data
+data:
+  image: busybox
+  volumes:
+    - ./data/jira:/var/atlassian/jira
+    - ./data/mysql:/var/lib/mysql
