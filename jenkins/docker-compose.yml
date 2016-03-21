@@ -1,0 +1,4 @@
+jenkins:
+  image: lucien/jenkins
+  ports:
+    - "12224:8080"
